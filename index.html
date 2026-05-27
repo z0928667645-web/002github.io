@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會議紀錄整理工具</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Meeting Minutes Organizer</p>
+          <h1>會議紀錄整理工具</h1>
+        </div>
+        <div class="top-actions" aria-label="主要操作">
+          <button class="ghost-button" id="sampleButton" type="button">載入範例</button>
+          <button class="ghost-button" id="clearButton" type="button">清空</button>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="會議紀錄整理工作區">
+        <form class="input-panel" id="meetingForm">
+          <div class="section-heading">
+            <h2>輸入內容</h2>
+            <span id="saveState">尚未整理</span>
+          </div>
+
+          <div class="meta-grid">
+            <label>
+              會議名稱
+              <input id="meetingName" type="text" placeholder="例：新產品上市會議" />
+            </label>
+            <label>
+              會議日期
+              <input id="meetingDate" type="date" />
+            </label>
+            <label class="wide">
+              與會人員
+              <input id="attendees" type="text" placeholder="例：行銷部、設計部、業務部" />
+            </label>
+          </div>
+
+          <label class="notes-label">
+            會議內容
+            <textarea
+              id="meetingNotes"
+              placeholder="貼上逐字稿、討論紀錄或零散筆記。工具會擷取摘要、討論重點、決議事項、待辦事項與追蹤項目。"
+            ></textarea>
+          </label>
+
+          <div class="controls">
+            <label class="toggle-row">
+              <input id="formalMode" type="checkbox" />
+              使用正式會議報告格式
+            </label>
+            <button class="primary-button" id="organizeButton" type="submit">整理會議紀錄</button>
+          </div>
+        </form>
+
+        <section class="output-panel" aria-live="polite">
+          <div class="section-heading">
+            <h2>整理結果</h2>
+            <div class="output-actions">
+              <button class="ghost-button" id="copyButton" type="button">複製</button>
+              <button class="ghost-button" id="downloadButton" type="button">下載</button>
+            </div>
+          </div>
+
+          <div class="summary-strip">
+            <div>
+              <span id="pointCount">0</span>
+              <small>討論重點</small>
+            </div>
+            <div>
+              <span id="decisionCount">0</span>
+              <small>決議事項</small>
+            </div>
+            <div>
+              <span id="todoCount">0</span>
+              <small>待辦事項</small>
+            </div>
+          </div>
+
+          <pre id="markdownOutput">請先貼上會議內容，然後按下「整理會議紀錄」。</pre>
+        </section>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
